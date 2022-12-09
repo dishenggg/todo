@@ -41,7 +41,7 @@ app.get('/todo/:id', (req, res) => {
     }
 });
 
-app.post('/todo', (req, res) => {
+app.post('/todo/new', (req, res) => {
     const newTodo = {
         id: uuidv4(),
         task: req.body.task,
@@ -57,6 +57,18 @@ app.delete('/todo/delete/:id', (req, res) => {
     if (typeof taskToDel !== 'undefined') {
         let index = todos.indexOf(taskToDel);
         todos.splice(index, 1)
+        res.json(todos);
+        res.status(200)
+    } else {
+        res.status(404).send("404 Not Found");
+    }
+});
+
+app.put('/todo/complete/:id', (req, res) => {
+    let task = todos.find(x => x.id == req.params.id);
+    if (typeof task !== 'undefined') {
+        let index = todos.indexOf(task);
+        todos[index].completed = !todos[index].completed
         res.json(todos);
         res.status(200)
     } else {
