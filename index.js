@@ -8,40 +8,61 @@ const api = require('./api');
 const todos = [
     {
         id: 1,
-        task: "Do A"
+        task: "Do A",
+        completed: false
     },
     {
         id: 2,
-        task: "Do B"
+        task: "Do B",
+        completed: false
     }
-]
+];
 
 app.use('/api', api);
 app.use(express.json());
 
 app.get('/', (req, res) => {
     res.status(200).send(
-        "Hello"
+        "Welcome"
     )
 });
 
 app.get('/todo', (req, res) => {
-    res.status(200).json(todos)
+    res.status(200).json(todos);
 });
 
 app.get('/todo/:id', (req, res) => {
-    res.status(200).send(req.params.id)
+    let task = todos.find(x => x.id == req.params.id);
+    console.log(task)
+    if (typeof task !== 'undefined') {
+        res.status(200).send(task);
+    } else {
+        res.status(404).send("404 Not Found");
+    }
 });
 
-app.post('/', (req, res) => {
+app.post('/todo', (req, res) => {
     const newTodo = {
         id: uuidv4(),
-        task: req.body.task
-    }
-    todos.push(newTodo)
+        task: req.body.task,
+        completed: false
+    };
+    todos.push(newTodo);
     res.status(201).json(todos);
 
-})
+});
+
+app.delete('/todo/delete/:id', (req, res) => {
+    let taskToDel = todos.find(x => x.id == req.params.id);
+    if (typeof taskToDel !== 'undefined') {
+        let index = todos.indexOf(taskToDel);
+        todos.splice(index, 1)
+        res.json(todos);
+        res.status(200)
+    } else {
+        res.status(404).send("404 Not Found");
+    }
+});
 
 app.listen(
     PORT,
