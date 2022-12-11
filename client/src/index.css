@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: lightgrey;
+  color: black;
+}
+
+.App {
+  padding: 32px;
+}
+
+h1 {
+  font-size: 72px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.todo {
+  position: relative;
+  background-color: rgb(187, 186, 186);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  
+}
+
+.todo:hover {
+  opacity: 0.9;
+}
