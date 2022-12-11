@@ -26,11 +26,11 @@ app.get('/', (req, res) => {
         "Welcome"
     )
 });
-
+// Get all tasks
 app.get('/todo', (req, res) => {
     res.status(200).json(todos);
 });
-
+// Get task with id
 app.get('/todo/:id', (req, res) => {
     let task = todos.find(x => x.id == req.params.id);
     console.log(task)
@@ -40,7 +40,7 @@ app.get('/todo/:id', (req, res) => {
         res.status(404).send("404 Not Found");
     }
 });
-
+// Adds new task to list
 app.post('/todo/new', (req, res) => {
     const newTodo = {
         id: uuidv4(),
@@ -51,7 +51,7 @@ app.post('/todo/new', (req, res) => {
     res.status(201).json(todos);
 
 });
-
+// Delete tasks from list
 app.delete('/todo/delete/:id', (req, res) => {
     let taskToDel = todos.find(x => x.id == req.params.id);
     if (typeof taskToDel !== 'undefined') {
@@ -64,6 +64,7 @@ app.delete('/todo/delete/:id', (req, res) => {
     }
 });
 
+// Toggle Complete
 app.put('/todo/complete/:id', (req, res) => {
     let task = todos.find(x => x.id == req.params.id);
     if (typeof task !== 'undefined') {
