@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import icon from './img/recycle-bin-line-icon.svg';
+import icon from './img/recycle-bin-line-icon.png';
 
 const API = "http://localhost:8080"
 
