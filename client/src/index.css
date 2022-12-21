@@ -27,7 +27,7 @@ h3 {
 .todo {
   position: relative;
   background-color: white(187, 186, 186);
-  padding: 12px;
+  padding: 0px;
   display: flex;
   align-items: center;
   border-bottom: 1px;
@@ -37,7 +37,7 @@ h3 {
 }
 
 .todo:hover {
-  background-color: rgba(211, 211, 211, 0.555);
+  background-color: rgba(224, 232, 255, 0.685);
 }
 
 .todo .modifyTask {
@@ -52,7 +52,8 @@ h3 {
 
 .todo .taskDetails {
   position:relative;
-  padding-left: 16px;
+  padding: 10px;
+  padding-left: 8px;
   transition: 0.5s;
 }
 
@@ -71,9 +72,28 @@ h3 {
   background-color: darkslategrey;
 }
 
+.todo .checkbox-area {
+  padding: 15px 15px;
+}
+
 .todo.completed .taskDetails {
   text-decoration-style:solid;
   text-decoration: line-through;
   color: rgb(155, 155, 155)
 
+}
+
+.addTask .addNewTodo {
+  width: 100%;
+  padding: 8px 18px;
+  border: none;
+  background-color:rgb(230, 230, 230);
+}
+
+.addTask .addNewTodo:focus{
+  background-color: rgb(243, 243, 243);
+}
+
+.addTask .addNewTodo:focus::placeholder{
+  color: transparent;
 }

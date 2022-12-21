@@ -29,16 +29,42 @@ function App() {
       .then(res => res.json());
     setTodos(updatedTodos)
   };
+
+  const addTodo = async () => {
+    const updatedTodos = await fetch(API + "/todo/new", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        task: newTodo
+      })
+    }).then(res => res.json())
+    setNewTodo("");
+    setTodos(updatedTodos);
+  };
+
+  const handleEnterKey = (event) => {
+    if (event.key === "Enter" && newTodo != "") {
+      addTodo();
+    }
+  }
+
   return (
     <div className="App">
         <h1>Hello</h1>
         <h3>Todos</h3>
-        <div className="addTask">ADD TASK</div>
+        
+        <div className="addTask">
+          <input className="addNewTodo" input="text" placeholder="+ Add New Task" onKeyDown={handleEnterKey} onChange={val => setNewTodo(val.target.value)} value={newTodo}></input>
+        </div>
 
         <div className="todos">
           {todos.length > 0 ? todos.map(todo => (
-            <div className={ "todo " + (todo.completed ? "completed" : "")} key = { todo.id } onClick = {() => toggleComplete(todo.id)}> 
-              <div className="checkbox"></div>
+            <div className={ "todo " + (todo.completed ? "completed" : "")} key = { todo.id }> 
+              <div className="checkbox-area" onClick = {() => toggleComplete(todo.id)}> 
+                <div className="checkbox" ></div>
+              </div>
               <div className="taskDetails">{ todo.task }</div>
               <div className="modifyTask">ch</div>
               <div className="deleteTask" onClick={() => deleteTodo(todo.id)}>x</div>
