@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: lightgrey;
+  background-color: white;
   color: black;
 }
 
@@ -26,11 +26,10 @@ h3 {
 
 .todo {
   position: relative;
-  background-color: rgb(187, 186, 186);
+  background-color: white(187, 186, 186);
   padding: 12px;
   display: flex;
   align-items: center;
-  margin-bottom: 0px;
   border-bottom: 1px;
   border-bottom-style: solid;
   border-bottom-color: black;
@@ -38,5 +37,35 @@ h3 {
 }
 
 .todo:hover {
-  opacity: 0.9;
+  background-color: rgba(211, 211, 211, 0.555);
+}
+
+.todo .modifyTask {
+  position:absolute;
+  right: 48px;
+}
+
+.todo .deleteTask {
+  position: absolute;
+  right: 16px;
+}
+
+.todo .taskDetails {
+  position:relative;
+  padding-left: 16px;
+}
+
+.todo .checkbox {
+  width: 10px;
+  height: 10px;
+  position: relative;
+  background-color: white;
+  transition: 0.5s;
+  border-color: grey;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.todo.completed .checkbox {
+  background-color: darkslategrey;
 }
