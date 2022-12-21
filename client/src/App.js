@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import icon from './img/recycle-bin-line-icon.svg';
 
 const API = "http://localhost:8080"
 
@@ -66,10 +67,8 @@ function App() {
                 <div className="checkbox" ></div>
               </div>
               <div className="taskDetails">{ todo.task }</div>
-              <div className="modifyTask">ch</div>
-              <div className="deleteTask" onClick={() => deleteTodo(todo.id)}>
-                <img src='https://github.com/dishenggg/todo/blob/dev/client/img/recycle-bin-line-icon.svg' ></img>
-              </div>
+              <div className="modifyTask">edit</div>
+              <div className="deleteTask" onClick={() => deleteTodo(todo.id)}><img src={icon}></img></div>
             </div>
           )) : "You Have No Tasks!"}
           

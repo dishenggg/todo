@@ -48,6 +48,7 @@ h3 {
 .todo .deleteTask {
   position: absolute;
   right: 16px;
+  padding-top: 5px;
 }
 
 .todo .taskDetails {
