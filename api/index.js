@@ -15,6 +15,11 @@ const todos = [
         id: 2,
         task: "Do B",
         completed: true
+    },
+    {
+        id: 3,
+        task: "Do C",
+        completed: false
     }
 ];
 
@@ -48,7 +53,8 @@ app.post('/todo/new', (req, res) => {
         completed: false
     };
     todos.push(newTodo);
-    res.status(201).json(todos);
+    res.json(todos);
+    res.status(201);
 
 });
 // Delete tasks from list
