@@ -5,11 +5,10 @@ const API = "http://localhost:8080"
 function App() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
-  let count = 0
 
   useEffect(() => {
     getTodos();
-  }, [todos]);
+  }, []);
 
   const getTodos = () => {
     fetch(API + "/todo")
@@ -20,15 +19,15 @@ function App() {
 
   const toggleComplete = async id => {
     const toggledTodo = await fetch(API + "/todo/complete/" + id, {method : "PUT"})
-      .then(res => res.json())
-    
-    setTodos(data => data.map(todo => {
-      if (todo.id === toggledTodo.id) {
-        todo.completed = toggledTodo.completed;
-      }
-      return todo;
-    }));
+      .then(res => res.json());
+    setTodos(toggledTodo);
 
+  };
+
+  const deleteTodo = async id => {
+    const updatedTodos = await fetch(API + "/todo/delete/" + id, {method : "DELETE"})
+      .then(res => res.json());
+    setTodos(updatedTodos)
   };
   return (
     <div className="App">
@@ -42,9 +41,9 @@ function App() {
               <div className="checkbox"></div>
               <div className="taskDetails">{ todo.task }</div>
               <div className="modifyTask">ch</div>
-              <div className="deleteTask">x</div>
+              <div className="deleteTask" onClick={() => deleteTodo(todo.id)}>x</div>
             </div>
-          )) : "A"}
+          )) : "You Have No Tasks!"}
           
         </div>
     </div>
