@@ -53,11 +53,12 @@ h3 {
 .todo .taskDetails {
   position:relative;
   padding-left: 16px;
+  transition: 0.5s;
 }
 
 .todo .checkbox {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   position: relative;
   background-color: white;
   transition: 0.5s;
@@ -68,4 +69,11 @@ h3 {
 
 .todo.completed .checkbox {
   background-color: darkslategrey;
+}
+
+.todo.completed .taskDetails {
+  text-decoration-style:solid;
+  text-decoration: line-through;
+  color: rgb(155, 155, 155)
+
 }

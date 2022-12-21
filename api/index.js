@@ -15,6 +15,11 @@ const todos = [
         id: 2,
         task: "Do B",
         completed: true
+    },
+    {
+        id: 3,
+        task: "Do C",
+        completed: false
     }
 ];
 
