@@ -46,7 +46,7 @@ function App() {
   };
 
   const handleEnterKey = (event) => {
-    if (event.key === "Enter" && newTodo != "") {
+    if (event.key === "Enter" && newTodo !== "") {
       addTodo();
     }
   }
@@ -68,7 +68,7 @@ function App() {
               </div>
               <div className="taskDetails">{ todo.task }</div>
               <div className="modifyTask">edit</div>
-              <div className="deleteTask" onClick={() => deleteTodo(todo.id)}><img src={icon}></img></div>
+              <div className="deleteTask" onClick={() => deleteTodo(todo.id)}><img src={icon} alt="trash icon"></img></div>
             </div>
           )) : "You Have No Tasks!"}
           
