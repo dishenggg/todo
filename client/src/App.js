@@ -67,7 +67,9 @@ function App() {
               </div>
               <div className="taskDetails">{ todo.task }</div>
               <div className="modifyTask">ch</div>
-              <div className="deleteTask" onClick={() => deleteTodo(todo.id)}>x</div>
+              <div className="deleteTask" onClick={() => deleteTodo(todo.id)}>
+                <img src='https://github.com/dishenggg/todo/blob/dev/client/img/recycle-bin-line-icon.svg' ></img>
+              </div>
             </div>
           )) : "You Have No Tasks!"}
           
