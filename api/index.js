@@ -1,5 +1,6 @@
 
 const express = require('express');
+const path = require('path');
 const {v4: uuidv4} = require('uuid')
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -25,6 +26,12 @@ const todos = [
 
 app.use(express.json());
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.get('/', (req, res) => {
     res.status(200).send(
