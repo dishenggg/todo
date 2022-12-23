@@ -6,7 +6,7 @@ const cors = require('cors');
 const todo = require('./todo.js')
 
 // Cors
-const whitelist = ['http://localhost:3000', "https://todo-five-phi.vercel.app"]
+const whitelist = ['http://localhost:3000', "https://todo-41e.pages.dev/", "https://yeodisheng.com/"]
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
