@@ -85,5 +85,5 @@ app.put('/todo/complete/:id', (req, res) => {
 
 app.listen(
     PORT,
-    () => console.log(`its alive on http://localhost:${PORT}`)
+    () => console.log(`its alive on PORT: ${PORT}`)
 );
