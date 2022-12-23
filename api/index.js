@@ -3,10 +3,10 @@ const express = require('express');
 const PORT = process.env.PORT || 8080;
 const app = express();
 const cors = require('cors');
-const todo = require('./todo.js')
+const todo = require('./todo')
 
-// Cors
-const whitelist = ['http://localhost:3000', "https://todo-41e.pages.dev/", "https://yeodisheng.com/"]
+// Cors Whitelist
+const whitelist = ['http://localhost:3000', "https://todo-41e.pages.dev/", "https://yeodisheng.com/", "https://todo-five-phi.vercel.app/"]
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -16,11 +16,10 @@ const corsOptions = {
     }
   }
 }
-app.use(cors(corsOptions));
 
 // Middleware
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cors());
 
 // Todo API
 app.use('/todo', todo)
