@@ -7,6 +7,7 @@ const todo = require('./todo')
 
 // Cors Whitelist
 const whitelist = ['http://localhost:3000', "https://todo-41e.pages.dev/", "https://yeodisheng.com/", "https://todo-five-phi.vercel.app/"]
+/* 
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -15,10 +16,12 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   }
-}
+} 
+*/
 
 // Middleware
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 // Todo API
