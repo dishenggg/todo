@@ -3,7 +3,7 @@ const express = require('express');
 const {v4: uuidv4} = require('uuid')
 const PORT = process.env.PORT || 8080;
 const app = express();
-//const cors = require('cors');
+const cors = require('cors');
 
 const todos = [
     {
@@ -24,7 +24,7 @@ const todos = [
 ];
 
 app.use(express.json());
-//app.use(cors());
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.status(200).send(
