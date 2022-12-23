@@ -55,7 +55,9 @@ h3 {
   position:relative;
   padding: 10px;
   padding-left: 8px;
+  padding-right: 95px;
   transition: 0.5s;
+  word-break: break-all;
 }
 
 .todo .checkbox {

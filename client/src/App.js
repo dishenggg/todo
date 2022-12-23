@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import icon from './img/recycle-bin-line-icon.svg';
 
-const API = "http://localhost:8080"
+const API = ""
 
 function App() {
   const [todos, setTodos] = useState([]);
