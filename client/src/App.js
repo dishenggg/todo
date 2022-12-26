@@ -96,7 +96,7 @@ function App() {
 
               {
                 editId === todo.id ? (
-                  <div contentEditable="true" autoFocus suppressContentEditableWarning={true}  className="editTodo" input="text" placeholder={todo.task} onKeyDown={e => handleEnterKey(updateTodo, e)} onInput={e => setEditedTodo(e.currentTarget.textContent)} onBlur={() => updateTodo}value={editedTodo}>{todo.task}</div>
+                  <div contentEditable="true" autoFocus suppressContentEditableWarning={true}  className="editTodo" input="text" placeholder={todo.task} onKeyDown={e => handleEnterKey(updateTodo, e)} onInput={e => setEditedTodo(e.currentTarget.textContent)} onBlur={e => updateTodo()}value={editedTodo}>{todo.task}</div>
                  ) : (
                   <div className="taskDetails" onClick={e => handleClickOnTask(todo.id, todo.task, e)}>{ todo.task }</div>
                  )
