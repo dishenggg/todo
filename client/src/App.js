@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import icon from './img/recycle-bin-line-icon.svg';
 import Footer from './footer';
 
@@ -10,7 +10,6 @@ function App() {
   const [newTodo, setNewTodo] = useState("");
   const [editId, setEditId] = useState(-1);
   const [editedTodo, setEditedTodo] = useState("");
-  const [ref, setRef] = useState(undefined);
 
   useEffect(() => {
     getTodos();
@@ -76,6 +75,9 @@ function App() {
   const handleClickOnTask = (id, task, event) => {
     setEditId(id);
     setEditedTodo(task);
+    setTimeout( () => {
+      event.target.focus();
+    }, 0)
   };
 
   return (
@@ -89,14 +91,14 @@ function App() {
 
         <div className="todos">
           {todos.length > 0 ? todos.map(todo => (
-            <div className={"todo " + (todo.completed ? "completed" : "")} key = {todo.id}> 
+            <div className={"todo " + (todo.completed ? "completed " : "") + (editId === todo.id ? "editing" : "")} key = {todo.id}> 
               <div className="checkbox-area" onClick = {() => toggleComplete(todo.id)}> 
                 <div className="checkbox" ></div>
               </div>
 
               {
                 editId === todo.id ? (
-                  <div contentEditable="true" autoFocus suppressContentEditableWarning={true}  className="editTodo" input="text" placeholder={todo.task} onKeyDown={e => handleEnterKey(updateTodo, e)} onInput={e => setEditedTodo(e.currentTarget.textContent)} onBlur={() => updateTodo}value={editedTodo}>{todo.task}</div>
+                  <div contentEditable="true" tabIndex="0" suppressContentEditableWarning={true}  className="editTodo" input="text" placeholder={todo.task} onKeyDown={e => handleEnterKey(updateTodo, e)} onInput={e => setEditedTodo(e.currentTarget.textContent)} onBlur={e => updateTodo()}value={editedTodo}>{todo.task}</div>
                  ) : (
                   <div className="taskDetails" onClick={e => handleClickOnTask(todo.id, todo.task, e)}>{ todo.task }</div>
                  )

@@ -60,12 +60,16 @@ h3 {
   padding-right: 95px;
   transition: var(--completionTransitionSpeed);
   word-break: break-all;
+  width: calc(100% - 95px);
 }
 
+.todos .editing {
+  background-color: rgb(233, 233, 233);
+  color:rgb(73, 73, 73);
+}
 .todo .editTodo  {
   font-size: 16px;
   border:0px;
-  background-color: transparent;
   width: 100%;
   word-break: break-all;
 }
@@ -74,8 +78,7 @@ h3 {
   outline:none;
   width:100%;
   word-break: break-all;
-  color:darkslateblue;
-}
+} 
 
 .todo .checkbox {
   width: 12px;
@@ -104,6 +107,7 @@ h3 {
 }
 
 .addTask .addNewTodo {
+  font-size: 16px;
   width: 100%;
   padding: 8px 18px;
   border: none;

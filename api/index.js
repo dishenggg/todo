@@ -6,18 +6,18 @@ const cors = require('cors');
 const todo = require('./todo')
 
 // Cors Whitelist
-const whitelist = ['http://localhost:3000', "https://todo-41e.pages.dev/", "https://yeodisheng.com/", "https://todo-five-phi.vercel.app/"]
-/* 
+
+const whitelist = ['http://localhost:3000', "https://todo-41e.pages.dev", "https://yeodisheng.com", "https://todo-five-phi.vercel.app"]
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log(origin);
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
     }
   }
-} 
-*/
+}
 
 // Middleware
 //app.use(cors(corsOptions));

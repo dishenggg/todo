@@ -26,7 +26,7 @@ const todos = [
     {
         id: 8,
         task: "Allow 1 click to edit instead of 2",
-        completed: false
+        completed: true
     },
     {
         id: 5,
