@@ -25,13 +25,12 @@ function App() {
     const updatedTodos = await fetch(API + "/todo/complete/" + id, {method : "PATCH"})
       .then(res => res.json());
     setTodos(updatedTodos);
-
   };
 
   const deleteTodo = async id => {
     const updatedTodos = await fetch(API + "/todo/delete/" + id, {method : "DELETE"})
       .then(res => res.json());
-    setTodos(updatedTodos)
+    setTodos(updatedTodos);
   };
 
   const addTodo = async () => {
@@ -44,9 +43,11 @@ function App() {
       body: JSON.stringify({
         task: newTodo
       })
-    }).then(res => res.json())
+    }).then(res => res.json());
     setNewTodo("");
     setTodos(updatedTodos);
+
+    
   };
 
   const updateTodo = async () => {
@@ -90,19 +91,19 @@ function App() {
 
         <div className="todos">
           {todos.length > 0 ? todos.map(todo => (
-            <div className={"todo " + (todo.completed ? "completed " : "") + (editId === todo.id ? "editing" : "")} key = {todo.id}> 
-              <div className="checkbox-area" onClick = {() => toggleComplete(todo.id)}> 
+            <div className={"todo " + (todo.completed ? "completed " : "") + (editId === todo._id ? "editing" : "")} key = {todo._id}> 
+              <div className="checkbox-area" onClick = {() => toggleComplete(todo._id)}> 
                 <div className="checkbox" ></div>
               </div>
 
               {
-                editId === todo.id ? (
+                editId === todo._id ? (
                   <div contentEditable="true" tabIndex="0" suppressContentEditableWarning={true}  className="editTodo" input="text" placeholder={todo.task} onKeyDown={e => handleEnterKey(updateTodo, e)} onInput={e => setEditedTodo(e.currentTarget.textContent)} onBlur={e => updateTodo()}value={editedTodo}>{todo.task}</div>
                  ) : (
-                  <div className="taskDetails" onClick={e => handleClickOnTask(todo.id, todo.task, e)}>{ todo.task }</div>
+                  <div className="taskDetails" onClick={e => handleClickOnTask(todo._id, todo.task, e)}>{ todo.task }</div>
                  )
               }
-              <div className="deleteTask" onClick={() => deleteTodo(todo.id)}><img src={icon} alt="trash icon"></img></div>
+              <div className="deleteTask" onClick={() => deleteTodo(todo._id)}><img src={icon} alt="trash icon"></img></div>
             </div>
           )) : "You Have No Tasks!"}
           

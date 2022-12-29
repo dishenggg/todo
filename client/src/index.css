@@ -124,11 +124,3 @@ h3 {
 .addTask .addNewTodo:focus::placeholder{
   color: transparent;
 }
-
-.footer {
-  position: fixed;
-  bottom: 0px;
-  padding-top: 3px;
-  background-color: white;
-  width: 100%
-}
