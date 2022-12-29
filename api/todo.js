@@ -19,12 +19,14 @@ const Todo = require('./models/Todo');
 router.get('/', async (req,res) => {
     const todos = await Todo.find();
     res.json(todos);
+    res.status(200);
   });
 
 // Get task with id TODO
 router.get('/:id', async (req, res) => {
     const todo = await Todo.findById(req.params.id);
     res.json(todo);
+    res.status(200);
 })
 
 // Adds new task to list
