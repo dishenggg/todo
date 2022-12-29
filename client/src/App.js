@@ -81,8 +81,8 @@ function App() {
 
   return (
     <div className="App">
-        <h1>Welcome</h1>
-        <h3>Todos</h3>
+        <h1>📝 Todo List</h1>
+        <h3>Todos ({todos.length})</h3>
         
         <div className="addTask">
           <input className="addNewTodo" input="text" placeholder="+ Add New Task" onKeyDown={e => handleEnterKey(addTodo, e)} onChange={e => setNewTodo(e.target.value)} value={newTodo}></input>
