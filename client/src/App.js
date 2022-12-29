@@ -22,20 +22,22 @@ function App() {
   };
 
   const toggleComplete = async id => {
-    const updatedTodos = await fetch(API + "/todo/complete/" + id, {method : "PATCH"})
-      .then(res => res.json());
-    setTodos(updatedTodos);
+    fetch(API + "/todo/complete/" + id, {method : "PATCH"})
+      .then(res => res.json())
+      .then(data => setTodos(data))
+      .catch(err => console.error(err));
   };
 
   const deleteTodo = async id => {
-    const updatedTodos = await fetch(API + "/todo/delete/" + id, {method : "DELETE"})
-      .then(res => res.json());
-    setTodos(updatedTodos);
+    fetch(API + "/todo/delete/" + id, {method : "DELETE"})
+      .then(res => res.json())
+      .then(data => setTodos(data))
+      .catch(err => console.error(err));
   };
 
   const addTodo = async () => {
     if (newTodo === "") {return}
-    const updatedTodos = await fetch(API + "/todo/new", {
+    fetch(API + "/todo/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -43,15 +45,14 @@ function App() {
       body: JSON.stringify({
         task: newTodo
       })
-    }).then(res => res.json());
-    setNewTodo("");
-    setTodos(updatedTodos);
-
-    
+    }).then(res => res.json())
+      .then(data => setTodos(data))
+      .catch(err => console.error(err));
+    setNewTodo("");    
   };
 
   const updateTodo = async () => {
-    const updatedTodos = await fetch(API + "/todo/edit/" + editId, {
+    fetch(API + "/todo/edit/" + editId, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -60,7 +61,8 @@ function App() {
         task: editedTodo
       })
     }).then(res => res.json())
-    setTodos(updatedTodos)
+      .then(data => setTodos(data))
+      .catch(err => console.error(err));
     setEditId(-1)
     setEditedTodo("")
   };
@@ -83,7 +85,7 @@ function App() {
   return (
     <div className="App">
         <h1>📝 Todo List</h1>
-        <h3>Todos ({todos.length})</h3>
+        <h3>Todos {API} ({todos.length})</h3>
         
         <div className="addTask">
           <input className="addNewTodo" input="text" placeholder="+ Add New Task" onKeyDown={e => handleEnterKey(addTodo, e)} onChange={e => setNewTodo(e.target.value)} value={newTodo}></input>
