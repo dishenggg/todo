@@ -16,13 +16,16 @@ body {
 }
 
 h1 {
+  display: flex;
   font-size: 72px;
   margin-bottom: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
 h3 {
-  font-size: 32px;
-  margin-bottom: 16px;
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
 .todo{
@@ -120,12 +123,4 @@ h3 {
 
 .addTask .addNewTodo:focus::placeholder{
   color: transparent;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0px;
-  padding-top: 3px;
-  background-color: white;
-  width: 100%
 }
