@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import icon from './img/recycle-bin-line-icon.svg';
 import Footer from './footer';
 
-const API = process.env.API || "http://localhost:8080"
+const API = process.env.REACT_APP_API
 
 function App() {
   const [todos, setTodos] = useState([]);
