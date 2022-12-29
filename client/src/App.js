@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import icon from './img/recycle-bin-line-icon.svg';
 import Footer from './footer';
 
-const API = "https://todo-five-phi.vercel.app"
-//const API = "http://localhost:8080"
+const API = process.env.API || "http://localhost:8080"
 
 function App() {
   const [todos, setTodos] = useState([]);
